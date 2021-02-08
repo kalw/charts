@@ -3,6 +3,32 @@ entries:
   statping:
   - apiVersion: v2
     appVersion: v0.90.74
+    created: "2021-02-08T22:25:32.289801433Z"
+    dependencies:
+    - condition: postgres.postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.4.0
+    description: Status page for monitoring your websites and applications
+    digest: ce5f22d2786bd534560688e464cd02cb59a930cc0db624517e349dca73c3f989
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/statping
+    icon: https://github.com/statping/statping/blob/dev/frontend/src/assets/logo.png?raw=true
+    keywords:
+    - statping
+    - status
+    - status-page
+    maintainers:
+    - email: nick@cajun.pro
+      name: DirtyCajunRice
+    name: statping
+    sources:
+    - https://github.com/statping/statping
+    type: application
+    urls:
+    - https://github.com/kalw/charts/releases/download/statping-1.0.7/statping-1.0.7.tgz
+    version: 1.0.7
+  - apiVersion: v2
+    appVersion: v0.90.74
     created: "2021-02-08T15:42:29.396116889Z"
     dependencies:
     - condition: postgres.posgresql.enabled
