@@ -98,20 +98,20 @@ spec:
                   name: postgres-{{ template "statping.fullname" . }}-auth
                   key: POSTGRES_PASSWORD
           {{- end }}
-            {{- if and (eq .Values.postgres.type "postgresql") .Values.postgres.posgresql.enabled }}
+            {{- if and (eq .Values.postgres.type "postgresql") }}
             - name: DB_CONN
               value: postgres
             - name: DB_HOST
-              value: {{ template "postgresql.fullname" . }}
+              value: {{ .Values.postgres.postgresql.hostname }}
             - name: DB_DATABASE
-              value: {{ template "postgresql.database" . }}
+              value: {{ .Values.postgres.postgresql.database }}
             - name: DB_USER
-              value: {{ template "postgresql.username" . }}
+              value: {{ .Values.postgres.postgresql.username }}
             - name: DB_PASS
               valueFrom:
                 secretKeyRef:
-                  name: {{ template "postgresql.secretName" . }}-postgresql
-                  key: postgresql-password
+                  name: {{  .Values.postgres.postgresql.secret.name }}
+                  key: {{ .Values.postgres.postgresql.secret.key }}
             {{- end }}
           {{- with .Values.env }}
             {{- toYaml . | nindent 12 }}
