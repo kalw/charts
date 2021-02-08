@@ -98,7 +98,7 @@ spec:
                   name: postgres-{{ template "statping.fullname" . }}-auth
                   key: POSTGRES_PASSWORD
           {{- end }}
-            {{- if and (eq .Values.postgres.type "postgresql") }}
+            {{- if eq .Values.postgres.type "postgresql" }}
             - name: DB_CONN
               value: postgres
             - name: DB_HOST
@@ -110,8 +110,8 @@ spec:
             - name: DB_PASS
               valueFrom:
                 secretKeyRef:
-                  name: {{  .Values.postgres.postgresql.secret.name }}
-                  key: {{ .Values.postgres.postgresql.secret.key }}
+                  name: {{ .Values.postgres.postgresql.secret.name | quote }}
+                  key: {{ .Values.postgres.postgresql.secret.key | quote }}
             {{- end }}
           {{- with .Values.env }}
             {{- toYaml . | nindent 12 }}
